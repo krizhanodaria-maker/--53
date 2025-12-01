@@ -1,85 +1,13 @@
-// П'ять варіантів sum(...args)
+'use strict';
 
-function sumFor(...args) {
-    let total = 0;
-    for (let i = 0; i < args.length; i++) {
-        total += args[i];
-    }
-    return total;
-}
-
-function sumForOf(...args) {
-    let total = 0;
-    for (const v of args) total += v;
-    return total;
-}
-
-function sumWhile(...args) {
-    let total = 0;
-    let i = 0;
-    while (i < args.length) {
-        total += args[i++];
-    }
-    return total;
-}
-
-function sumDoWhile(...args) {
-    if (args.length === 0) return 0;
-    let total = 0;
-    let i = 0;
-    do {
-        total += args[i++];
-    } while (i < args.length);
-    return total;
-}
-
-function sumReduce(...args) {
-    return args.reduce((s, v) => s + v, 0);
-}
-
-// max для двовимірного масиву
-function max(matrix) {
-    let maxVal = -Infinity;
-    for (const row of matrix) {
-        for (const v of row) {
-            if (v > maxVal) maxVal = v;
-        }
-    }
-    return maxVal === -Infinity ? undefined : maxVal;
-}
-
-// ages через for..in
-function ages(persons) {
-    const result = {};
-    for (const key in persons) {
-        if (!Object.prototype.hasOwnProperty.call(persons, key)) continue;
-        const p = persons[key];
-        result[key] = p.died - p.born;
-    }
-    return result;
-}
-
-// Приклади
-const a = sumFor(1, 2, 3);      // 6
-const b = sumForOf(0);          // 0
-const c = sumWhile();           // 0
-const d = sumDoWhile(1, -1, 1); // 1
-const e = sumReduce(10, -1, -1, -1); // 7
-
-const m = max([[1,2,3],[4,5,6],[7,8,9]]); // 9
-
-const persons = {
-  lenin: { born: 1870, died: 1924 },
-  mao: { born: 1893, died: 1976 },
-  gandhi: { born: 1869, died: 1948 },
-  hirohito: { born: 1901, died: 1989 },
+const sum = (...args) => {
+  // Простой способ
+  let total = 0;
+  for (let i = 0; i < args.length; i++) {
+    total += args[i];
+  }
+  return total;
 };
-const lifeSpans = ages(persons);
-/* lifeSpans:
-{
-  lenin: 54,
-  mao: 83,
-  gandhi: 79,
-  hirohito: 88
-}
-*/
+
+
+console.log(sum(1, 2, 3)); // 6
